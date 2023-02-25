@@ -24,16 +24,16 @@ export const Section = styled.div`
   align-items: center;
 `;
 
-export const Row = styled.div<{ location: string; to: string }>`
+export const Row = styled.div<{ isActive: boolean }>`
   margin: 12px;
   font-size: 18px;
   ${(props) =>
-    props.location === props.to
+    props.isActive
       ? css`
           opacity: 1;
         `
       : css`
-          opacity: 0.5;
+          opacity: 0.6;
         `}
   color:white;
 `;
