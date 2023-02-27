@@ -5,13 +5,16 @@ import styled from "styled-components";
 import GlobalStyles from "./styles/GloalStyle";
 import { RouterProvider } from "react-router-dom";
 import router from "./Router";
+import { RecoilRoot } from "recoil";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <>
-    <GlobalStyles />
-    <RouterProvider router={router} />
+    <RecoilRoot>
+      <GlobalStyles />
+      <RouterProvider router={router} />
+    </RecoilRoot>
   </>
 );

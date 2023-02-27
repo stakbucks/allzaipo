@@ -7,6 +7,9 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  position: absolute;
+  top: 50px;
+  right: 0;
 `;
 export const Wrapper = styled.div`
   width: 550px;
