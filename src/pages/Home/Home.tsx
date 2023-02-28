@@ -1,9 +1,12 @@
 import Banner from "../../components/Banner/Banner";
 import { Outlet, useLocation } from "react-router-dom";
 import * as S from "./style";
+import { useEffect } from "react";
+import { getLoginStatus } from "../../api/kakaoLoginApi";
 function Home() {
-  const location = useLocation();
-  console.log(location.search.split("=")[1]);
+  useEffect(() => {
+    getLoginStatus().then((res) => console.log(res));
+  });
   return (
     <S.HomeContainer>
       <Banner />

@@ -14,9 +14,7 @@ function LoginModal() {
     setLoginModalOpen(false);
   };
   const handleLoginClick = () => {
-    axios
-      .get("https://alzzaipo.com/login/kakao")
-      .then((res) => console.log(res.data));
+    window.location.href = "https://alzzaipo.com/login/kakao";
   };
   return (
     <>
