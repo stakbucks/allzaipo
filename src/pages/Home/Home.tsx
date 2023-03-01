@@ -3,10 +3,9 @@ import { Outlet, useLocation } from "react-router-dom";
 import * as S from "./style";
 import { useEffect } from "react";
 import { getLoginStatus } from "../../api/kakaoLoginApi";
+import { useSetRecoilState } from "recoil";
+import { loggedInInfoAtom } from "../../atoms/loggedInInfo/loggedInInfoAtom";
 function Home() {
-  useEffect(() => {
-    getLoginStatus().then((res) => console.log(res));
-  });
   return (
     <S.HomeContainer>
       <Banner />

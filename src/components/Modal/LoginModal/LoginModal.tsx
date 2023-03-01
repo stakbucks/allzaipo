@@ -1,7 +1,7 @@
 import * as S from "./style";
 import { useMatch, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { loginModalAtom } from "../../../atoms/loginModalAtom/loginModalAtom";
+import { loginModalAtom } from "../../../atoms/loginModalAtom/loginModal/loginModalAtom";
 import axios from "axios";
 
 const REST_API_KEY = "18f4aac8de07396e2c22375ac689ee09";

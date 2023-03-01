@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import LoginModal from "../Modal/LoginModal/LoginModal";
 import * as S from "./style";
-import { useRecoilState } from "recoil";
-import { loginModalAtom } from "../../atoms/loginModalAtom/loginModalAtom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { loginModalAtom } from "../../atoms/loginModalAtom/loginModal/loginModalAtom";
+import { loggedInInfoAtom } from "../../atoms/loggedInInfo/loggedInInfoAtom";
 
 function NavBar() {
   const location = useLocation();
+  const loggedInInfo = useRecoilValue(loggedInInfoAtom);
   const [loginModalOpen, setLoginModalOpen] = useRecoilState(loginModalAtom);
   const checkIsActive = (to: string) => {
     if (location.pathname === to) return true;
@@ -33,13 +35,17 @@ function NavBar() {
           <S.Row isActive={checkIsActive("/portfolio")}>
             <Link to="/portfolio">포트폴리오</Link>
           </S.Row>
-          <S.Row
-            style={{ cursor: "pointer" }}
-            isActive={false}
-            onClick={handleClick}
-          >
-            로그인
-          </S.Row>
+          {loggedInInfo.isLoggedIn ? (
+            <S.Row isActive={false}>{loggedInInfo.id}님</S.Row>
+          ) : (
+            <S.Row
+              style={{ cursor: "pointer" }}
+              isActive={false}
+              onClick={handleClick}
+            >
+              로그인
+            </S.Row>
+          )}
         </S.Section>
       </S.Nav>
     </S.Container>

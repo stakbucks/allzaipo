@@ -6,15 +6,21 @@ import GlobalStyles from "./styles/GloalStyle";
 import { RouterProvider } from "react-router-dom";
 import router from "./Router";
 import { RecoilRoot } from "recoil";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
+const queryClient = new QueryClient();
+
 root.render(
   <>
     <RecoilRoot>
-      <GlobalStyles />
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <GlobalStyles />
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </RecoilRoot>
   </>
 );
