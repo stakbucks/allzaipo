@@ -10,6 +10,7 @@ export const Container = styled.div`
   position: absolute;
   top: 50px;
   right: 0;
+  z-index: -1;
 `;
 export const Wrapper = styled.div`
   width: 550px;

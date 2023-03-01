@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
-
+import styled, { css, keyframes } from "styled-components";
+import { rootCertificates } from "tls";
 export const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -7,6 +7,7 @@ export const Container = styled.div`
   position: fixed;
   width: 100vw;
   height: 50px;
+  z-index: 0;
   background-color: var(--bgColor);
 `;
 
@@ -36,4 +37,34 @@ export const Row = styled.div<{ isActive: boolean }>`
           opacity: 0.6;
         `}
   color:white;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+`;
+
+const rotateBtn = keyframes`
+  from{transform:none}
+  to{transform: rotateZ(180deg)}
+`;
+const rotateBackBtn = keyframes`
+  from{transform: rotateZ(180deg)}
+  to{}
+`;
+
+export const DropdownBtn = styled.div<{ isDropdownOpen: boolean }>`
+  ${(props) =>
+    props.isDropdownOpen
+      ? css`
+          animation: ${rotateBtn} 0.2s linear alternate;
+          transform: rotate(180deg);
+        `
+      : css`
+          transform: 0;
+          animation: ${rotateBackBtn} 0.2s linear alternate;
+        `}
+
+  box-sizing: border-box;
+  margin-left: 5px;
+  cursor: pointer;
 `;

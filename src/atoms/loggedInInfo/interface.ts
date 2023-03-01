@@ -1,4 +1,4 @@
 export interface ILoggedInInfoAtom {
-  isLoggedIn: boolean;
-  id?: string;
+  status?: boolean;
+  nickname?: string;
 }

@@ -15,7 +15,10 @@ const Wrapper = styled.div`
 function App() {
   const setLoggedInInfo = useSetRecoilState(loggedInInfoAtom);
   useEffect(() => {
-    getLoginStatus().then((res) => setLoggedInInfo({ isLoggedIn: res.data }));
+    getLoginStatus().then((res) => {
+      console.log(res.data);
+      setLoggedInInfo(res.data);
+    });
   });
   return (
     <Wrapper>
