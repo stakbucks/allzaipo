@@ -3,11 +3,11 @@ import { ILoggedInInfoAtom } from "../../../atoms/loggedInInfo/interface";
 import * as S from "./style";
 import { useSetRecoilState } from "recoil";
 import { loggedInInfoAtom } from "../../../atoms/loggedInInfo/loggedInInfoAtom";
+import useLogout from "../../../hooks/useLogout";
 function DropdownBox({ nickname }: { nickname: string | undefined }) {
-  const setLoggedInInfo = useSetRecoilState(loggedInInfoAtom);
-  const handleLogoutClick = async () => {
-    await getLogout();
-    await getLoginStatus().then((res) => setLoggedInInfo(res.data));
+  const { handleLogout } = useLogout();
+  const handleLogoutClick = () => {
+    handleLogout();
   };
   return (
     <S.DropdownBoxContainer>

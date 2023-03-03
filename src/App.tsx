@@ -7,6 +7,8 @@ import { loginModalAtom } from "./atoms/loginModalAtom/loginModal/loginModalAtom
 import LoginModal from "./components/Modal/LoginModal/LoginModal";
 import { getLoginStatus } from "./apis/api/kakaoLoginApi";
 import { loggedInInfoAtom } from "./atoms/loggedInInfo/loggedInInfoAtom";
+import { useQuery } from "react-query";
+import { ILoggedInInfoAtom } from "./atoms/loggedInInfo/interface";
 
 const Wrapper = styled.div`
   width: 1210px;
@@ -14,12 +16,13 @@ const Wrapper = styled.div`
 
 function App() {
   const setLoggedInInfo = useSetRecoilState(loggedInInfoAtom);
-  useEffect(() => {
-    getLoginStatus().then((res) => {
-      console.log(res.data);
-      setLoggedInInfo(res.data);
-    });
-  });
+  const { data } = useQuery<ILoggedInInfoAtom>(
+    ["loginStatus"],
+    getLoginStatus,
+    {
+      onSuccess: (data) => setLoggedInInfo(data),
+    }
+  );
   return (
     <Wrapper>
       <NavBar />

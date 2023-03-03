@@ -25,7 +25,7 @@ function NavBar() {
   };
 
   const handlePortfolioClick = () => {
-    loggedInInfo.status ? navigate("/portfolio") : setLoginModalOpen(true);
+    loggedInInfo.data.status ? navigate("/portfolio") : setLoginModalOpen(true);
   };
 
   const toggleDropdownOpen = () => setDropdownOpen((cur) => !cur);
@@ -51,18 +51,18 @@ function NavBar() {
           >
             포트폴리오
           </S.Row>
-          {loggedInInfo.status ? (
+          {loggedInInfo.data.status ? (
             <S.Row
               onClick={toggleDropdownOpen}
               style={{ color: "#1E90FF" }}
               isActive={true}
             >
-              {loggedInInfo.nickname}님{" "}
+              {loggedInInfo.data.nickname}님{" "}
               <S.DropdownBtn isDropdownOpen={dropdownOpen}>
                 <FontAwesomeIcon icon={faChevronUp} />
               </S.DropdownBtn>
               {dropdownOpen ? (
-                <DropdownBox nickname={loggedInInfo.nickname} />
+                <DropdownBox nickname={loggedInInfo.data.nickname} />
               ) : null}
             </S.Row>
           ) : (

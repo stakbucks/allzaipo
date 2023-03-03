@@ -4,7 +4,9 @@ import { ILoggedInInfoAtom } from "./interface";
 export const loggedInInfoAtom = atom<ILoggedInInfoAtom>({
   key: "loggedInInfo",
   default: {
-    status: false,
-    nickname: "",
+    data: {
+      status: false,
+      nickname: "",
+    },
   },
 });

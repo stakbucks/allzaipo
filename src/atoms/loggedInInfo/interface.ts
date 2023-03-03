@@ -1,4 +1,6 @@
 export interface ILoggedInInfoAtom {
-  status?: boolean;
-  nickname?: string;
+  data: {
+    status?: boolean;
+    nickname?: string;
+  };
 }
