@@ -13,10 +13,7 @@ function Portfolio() {
   const { data } = useQuery<IPortfolio>(
     ["portfolio", loggedInInfo.data.nickname],
     getUserPortfolios,
-    {
-      staleTime: 300000,
-      onSuccess: () => console.log("portfolio fetched"),
-    }
+    { staleTime: 30000 }
   );
 
   if (!loggedInInfo.data.status) navigate("/");
