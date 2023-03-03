@@ -3,8 +3,15 @@ import { useQuery } from "react-query";
 import { IPortfolio } from "./interface";
 import PortfolioItem from "../../components/PortfolioItem/PortfolioItem";
 import { getUserPortfolios } from "../../apis/api/portfolioApi";
+import { useRecoilValue } from "recoil";
+import { loggedInInfoAtom } from "../../atoms/loggedInInfo/loggedInInfoAtom";
+import { ILoggedInInfoAtom } from "../../atoms/loggedInInfo/interface";
 function Portfolio() {
-  const { data } = useQuery<IPortfolio>(["id", "portfolio"], getUserPortfolios);
+  const loggedInInfo = useRecoilValue<ILoggedInInfoAtom>(loggedInInfoAtom);
+  const { data } = useQuery<IPortfolio>(
+    ["portfolio", loggedInInfo.nickname],
+    getUserPortfolios
+  );
   console.log(data?.data);
   return (
     <S.Wrapper>
