@@ -10,14 +10,16 @@ import { useNavigate } from "react-router-dom";
 function Portfolio() {
   const navigate = useNavigate();
   const loggedInInfo = useRecoilValue<ILoggedInInfoAtom>(loggedInInfoAtom);
-
   const { data } = useQuery<IPortfolio>(
     ["portfolio", loggedInInfo.data.nickname],
-    getUserPortfolios
+    getUserPortfolios,
+    {
+      staleTime: 300000,
+      onSuccess: () => console.log("portfolio fetched"),
+    }
   );
-  
-  if (!loggedInInfo.data.status) navigate("/");
 
+  if (!loggedInInfo.data.status) navigate("/");
 
   return (
     <S.Wrapper>
