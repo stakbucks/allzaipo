@@ -1,4 +1,4 @@
-import { getLoginStatus, getLogout } from "../../../api/kakaoLoginApi";
+import { getLoginStatus, getLogout } from "../../../apis/api/kakaoLoginApi";
 import { ILoggedInInfoAtom } from "../../../atoms/loggedInInfo/interface";
 import * as S from "./style";
 import { useSetRecoilState } from "recoil";

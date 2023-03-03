@@ -1,9 +1,8 @@
-import { getUserPortfolios } from "../../api/kakaoLoginApi";
 import * as S from "./style";
-import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { IPortfolio } from "./interface";
 import PortfolioItem from "../../components/PortfolioItem/PortfolioItem";
+import { getUserPortfolios } from "../../apis/api/portfolioApi";
 function Portfolio() {
   const { data } = useQuery<IPortfolio>(["id", "portfolio"], getUserPortfolios);
   console.log(data?.data);

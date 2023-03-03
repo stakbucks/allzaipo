@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar/NavBar";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { loginModalAtom } from "./atoms/loginModalAtom/loginModal/loginModalAtom";
 import LoginModal from "./components/Modal/LoginModal/LoginModal";
-import { getLoginStatus } from "./api/kakaoLoginApi";
+import { getLoginStatus } from "./apis/api/kakaoLoginApi";
 import { loggedInInfoAtom } from "./atoms/loggedInInfo/loggedInInfoAtom";
 
 const Wrapper = styled.div`
