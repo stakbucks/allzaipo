@@ -49,7 +49,7 @@ function AnalyzeForm() {
           type="number"
         />
       </S.InputWrapper>
-      <S.SubmitBtn>제출</S.SubmitBtn>
+      <S.SubmitBtn>확인</S.SubmitBtn>
     </S.Form>
   );
 }

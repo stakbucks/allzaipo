@@ -35,8 +35,8 @@ export const Input = styled.input`
 `;
 
 export const SubmitBtn = styled.button`
-  width: 80px;
-  height: 50px;
+  width: 60px;
+  height: 40px;
   border: none;
   font-weight: 400;
   font-size: 18px;
