@@ -1,4 +1,5 @@
 import * as S from "./style";
+import * as PS from "../../styles/PageStyle";
 import { useQuery } from "react-query";
 import { IPortfolio } from "./interface";
 import PortfolioItem from "../../components/PortfolioItem/PortfolioItem";
@@ -19,14 +20,14 @@ function Portfolio() {
   if (!loggedInInfo.data.status) navigate("/");
 
   return (
-    <S.Wrapper>
-      <S.Title>포트폴리오</S.Title>
+    <PS.Wrapper>
+      <PS.Title>포트폴리오</PS.Title>
       <S.Container>
         {data?.data.map((item) => (
           <PortfolioItem key={item.portfolioId} item={item} />
         ))}
       </S.Container>
-    </S.Wrapper>
+    </PS.Wrapper>
   );
 }
 export default Portfolio;

@@ -54,7 +54,7 @@ function NavBar() {
           {loggedInInfo.data.status ? (
             <S.Row
               onClick={toggleDropdownOpen}
-              style={{ color: "#1E90FF" }}
+              style={{ color: "var(--mainColor)" }}
               isActive={true}
             >
               {loggedInInfo.data.nickname}님{" "}
