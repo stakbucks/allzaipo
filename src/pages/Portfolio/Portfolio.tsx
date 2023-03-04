@@ -7,7 +7,7 @@ import { getUserPortfolios } from "../../apis/api/portfolioApi";
 import { useRecoilValue } from "recoil";
 import { loggedInInfoAtom } from "../../atoms/loggedInInfo/loggedInInfoAtom";
 import { ILoggedInInfoAtom } from "../../atoms/loggedInInfo/interface";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 function Portfolio() {
   const navigate = useNavigate();
   const loggedInInfo = useRecoilValue<ILoggedInInfoAtom>(loggedInInfoAtom);
@@ -26,6 +26,7 @@ function Portfolio() {
         {data?.data.map((item) => (
           <PortfolioItem key={item.portfolioId} item={item} />
         ))}
+        <Outlet />
       </S.Container>
     </PS.Wrapper>
   );

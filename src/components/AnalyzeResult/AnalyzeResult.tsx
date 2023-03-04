@@ -16,7 +16,7 @@ function AnalyzeResult() {
       {analyzeResult.length ? (
         <S.Wrapper>
           <S.AverageProfitRate>
-            평균 수익률: {Math.floor(averageProfitRate())}
+            평균 수익률: {Math.floor(averageProfitRate())}%
           </S.AverageProfitRate>
           <S.Container>
             <S.Labels>종목명</S.Labels>

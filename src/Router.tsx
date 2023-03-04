@@ -4,6 +4,7 @@ import Home from "./pages/Home/Home";
 import Portfolio from "./pages/Portfolio/Portfolio";
 import Analyze from "./pages/Analyze/Analyze";
 import LoginModal from "./components/Modal/LoginModal/LoginModal";
+import PortfolioAdd from "./components/PortfolioAdd/PortfolioAdd";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,12 @@ const router = createBrowserRouter([
       {
         path: "portfolio",
         element: <Portfolio />,
+        children: [
+          {
+            path: "add",
+            element: <PortfolioAdd />,
+          },
+        ],
       },
       {
         path: "analyze",

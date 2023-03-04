@@ -22,13 +22,14 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 2fr 2fr 1.5fr 1fr 2fr 2fr 1fr 1fr 1fr;
   justify-items: center;
+  margin: 0px;
   align-items: center;
-  grid-row-gap: 15px;
-  &:first-child {
-    items: flex-end;
-  }
+
   &:nth-child(2n-1) {
     background-color: wheat;
+  }
+  &:first-child {
+    align-items: flex-end;
   }
 `;
 
