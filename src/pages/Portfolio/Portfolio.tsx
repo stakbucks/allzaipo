@@ -19,14 +19,18 @@ function Portfolio() {
 
   if (!loggedInInfo.data.status) navigate("/");
 
+  const handleAdd = () => {
+    navigate("/");
+  };
+
   return (
     <PS.Wrapper>
       <PS.Title>포트폴리오</PS.Title>
+      <S.AddBtn onClick={handleAdd}>추가하기</S.AddBtn>
       <S.Container>
         {data?.data.map((item) => (
           <PortfolioItem key={item.portfolioId} item={item} />
         ))}
-        <Outlet />
       </S.Container>
     </PS.Wrapper>
   );
