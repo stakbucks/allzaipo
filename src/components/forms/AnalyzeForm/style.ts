@@ -7,6 +7,7 @@ export const Form = styled.form`
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
   gap: 20px;
+  margin-bottom: 20px;
 `;
 
 export const InputWrapper = styled.div`
@@ -16,7 +17,6 @@ export const InputWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 8px;
-
 `;
 
 export const InputLabel = styled.label`
@@ -44,5 +44,6 @@ export const SubmitBtn = styled.button`
   background: var(--bgColor);
   color: var(--mainColor);
   grid-column-start: 1;
-    grid-column-end: 3;
+  grid-column-end: 3;
+  cursor: pointer;
 `;
