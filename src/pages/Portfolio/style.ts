@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const Container = styled.div`
   margin-top: 30px;
@@ -8,8 +9,7 @@ export const Container = styled.div`
   grid-template-columns: repeat(4, 1fr);
   align-items: center;
   justify-items: center;
-  column-gap: 20px;
-  row-gap: 60px;
+  row-gap: 20px;
 `;
 
 export const AddBtn = styled.button`
@@ -22,4 +22,22 @@ export const AddBtn = styled.button`
   background: var(--bgColor);
   color: var(--mainColor);
   cursor: pointer;
+`;
+
+export const ItemContainer = styled(motion.div)`
+  width: 220px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const SelectedWrapper = styled(motion.div)`
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
 `;

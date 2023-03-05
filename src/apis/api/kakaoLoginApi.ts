@@ -1,9 +1,8 @@
 import { baseApi } from "../utils/instance";
 
 const LOGIN_STATUS = "/api/login/status";
-const LOGIN = "/api/login";
-const LOGOUT = "/api/logout";
+const LOGOUT = "/logout"
 
-export const getLoginStatus = () => baseApi.get("/api/getLoginStatus");
+export const getLoginStatus = () => baseApi.get(LOGIN_STATUS);
 
-export const getLogout = () => baseApi.get("/logout");
+export const getLogout = () => baseApi.get(LOGOUT);

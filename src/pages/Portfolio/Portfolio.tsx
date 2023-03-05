@@ -1,15 +1,19 @@
 import * as S from "./style";
 import * as PS from "../../styles/PageStyle";
 import { useQuery } from "react-query";
-import { IPortfolio } from "./interface";
+import { IPortfolio, IPortfolioItem } from "./interface";
 import PortfolioItem from "../../components/PortfolioItem/PortfolioItem";
 import { getUserPortfolios } from "../../apis/api/portfolioApi";
 import { useRecoilValue } from "recoil";
 import { loggedInInfoAtom } from "../../atoms/loggedInInfo/loggedInInfoAtom";
 import { ILoggedInInfoAtom } from "../../atoms/loggedInInfo/interface";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import SelectedPortfolioItem from "../../components/PortfolioItem/SelectedPortfolioItem/SelelctedPortfolioItem";
+import { AnimatePresence } from "framer-motion";
 function Portfolio() {
   const navigate = useNavigate();
+  const [selected, setSelected] = useState<IPortfolioItem | null>();
   const loggedInInfo = useRecoilValue<ILoggedInInfoAtom>(loggedInInfoAtom);
   const { data } = useQuery<IPortfolio>(
     ["portfolio", loggedInInfo.data.nickname],
@@ -22,6 +26,12 @@ function Portfolio() {
   const handleAdd = () => {
     navigate("/");
   };
+  const handleSelect = (item: IPortfolioItem) => {
+    setSelected(item);
+  };
+  const handleUnselect = () => {
+    setSelected(null);
+  };
 
   return (
     <PS.Wrapper>
@@ -29,9 +39,21 @@ function Portfolio() {
       <S.AddBtn onClick={handleAdd}>추가하기</S.AddBtn>
       <S.Container>
         {data?.data.map((item) => (
-          <PortfolioItem key={item.portfolioId} item={item} />
+          <S.ItemContainer
+            transition={{ duration: 0 }}
+            onClick={() => handleSelect(item)}
+            layoutId={item.portfolioId + ""}
+            key={item.portfolioId}
+          >
+            <PortfolioItem item={item} />
+          </S.ItemContainer>
         ))}
       </S.Container>
+      {selected ? (
+        <S.SelectedWrapper onClick={() => setSelected(null)}>
+          <SelectedPortfolioItem item={selected} />
+        </S.SelectedWrapper>
+      ) : null}
     </PS.Wrapper>
   );
 }

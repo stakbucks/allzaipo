@@ -1,5 +1,5 @@
 import { baseApi } from "../utils/instance";
 
-const getUserPortfoliosURI = "api/ipo/user-portfolios";
+const getUserPortfoliosURI = "api/portfolio/list";
 
-export const getUserPortfolios = () => baseApi.get("/api/getUserPortfolios");
+export const getUserPortfolios = () => baseApi.get(getUserPortfoliosURI);

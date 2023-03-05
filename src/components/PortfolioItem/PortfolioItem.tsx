@@ -1,9 +1,12 @@
 import * as S from "./style";
 import { IPortfolioItem } from "../../pages/Portfolio/interface";
+import { useState } from "react";
+import SelectedPortfolioItem from "./SelectedPortfolioItem/SelelctedPortfolioItem";
+
 function PortfolioItem({ item }: { item: IPortfolioItem }) {
   return (
-    <S.Item key={item.portfolioId}>
-      <S.ItemTitle>{item.agents}</S.ItemTitle>
+    <S.Item whileHover={{ scale: 1.1 }}>
+      <S.ItemTitle>{item.stockName}</S.ItemTitle>
       <S.ItemProfitRate>
         수익률: {item.profitRate}%
         <S.ProfitRangeBar>
