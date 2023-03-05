@@ -8,10 +8,11 @@ import { useSetRecoilState } from "recoil";
 import { analyzeResultAtom } from "../../../atoms/analyzeResultAtom/analyzeResultAtom";
 
 function AnalyzeForm() {
-  const { register, handleSubmit, watch } = useForm();
+  const { register, handleSubmit, watch, getValues } = useForm();
   const [submit, setSubmit] = useState(false);
   const [noData, setNoData] = useState(false);
   const analyzeInputs = watch();
+  const values = getValues();
   const setAnalyzeResultAtom = useSetRecoilState(analyzeResultAtom);
   const { data, refetch } = useQuery(
     ["analyzeResult"],

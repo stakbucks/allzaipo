@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 30px;
 `;
 
 export const AverageProfitRate = styled.div`
@@ -24,7 +25,6 @@ export const Container = styled.div`
   justify-items: center;
   margin: 0px;
   align-items: center;
-
   &:nth-child(2n-1) {
     background-color: wheat;
   }
