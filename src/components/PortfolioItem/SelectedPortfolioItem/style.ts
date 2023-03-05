@@ -8,17 +8,22 @@ export const Item = styled(motion.div)`
   border: 1px solid black;
   background-color: rgba(255, 255, 255, 1);
   position: relative;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  padding: 0 20px;
   justify-content: center;
 `;
 
 export const ItemTitle = styled.div`
+  width: 560px;
+  text-align: center;
   position: absolute;
   top: 30px;
   font-size: 30px;
   font-weight: 700;
+  margin-bottom: 15px;
 `;
 export const ItemProfitRate = styled.div`
   margin-top: 50px;
@@ -30,11 +35,15 @@ export const ItemProfitRate = styled.div`
   gap: 20px;
 `;
 export const ProfitRangeBar = styled.div`
-  width: 400px;
+  width: 560px;
   height: 12px;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.1);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 15px;
 `;
 
 export const ProfitRange = styled.div<{ profitRate: number }>`
@@ -46,4 +55,35 @@ export const ProfitRange = styled.div<{ profitRate: number }>`
   border-radius: 10px 0 0 10px;
   background-color: ${(props) => (props.profitRate >= 0 ? "red " : "blue")};
   position: absolute;
+`;
+
+export const InfoWrapper = styled.div`
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+`;
+
+export const InfoLabel = styled.label`
+  font-size: 18px;
+  font-weight: 500;
+`;
+export const Info = styled.span`
+  font-size: 16px;
+  font-weight: 400;
+`;
+
+export const Btns = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 20px;
+  right: 25px;
+  gap: 20px;
+`;
+
+export const Btn = styled.div`
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
 `;

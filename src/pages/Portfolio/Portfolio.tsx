@@ -7,10 +7,10 @@ import { getUserPortfolios } from "../../apis/api/portfolioApi";
 import { useRecoilValue } from "recoil";
 import { loggedInInfoAtom } from "../../atoms/loggedInInfo/loggedInInfoAtom";
 import { ILoggedInInfoAtom } from "../../atoms/loggedInInfo/interface";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import SelectedPortfolioItem from "../../components/PortfolioItem/SelectedPortfolioItem/SelelctedPortfolioItem";
-import { AnimatePresence } from "framer-motion";
+
 function Portfolio() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState<IPortfolioItem | null>();
