@@ -10,10 +10,12 @@ import { ILoggedInInfoAtom } from "../../atoms/loggedInInfo/interface";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import SelectedPortfolioItem from "../../components/PortfolioItem/SelectedPortfolioItem/SelelctedPortfolioItem";
+import PortfolioAdd from "../../components/PortfolioAdd/PortfolioAdd";
 
 function Portfolio() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState<IPortfolioItem | null>();
+  const [adding, setAdding] = useState(false);
   const loggedInInfo = useRecoilValue<ILoggedInInfoAtom>(loggedInInfoAtom);
   const { data } = useQuery<IPortfolio>(
     ["portfolio", loggedInInfo.data.nickname],
@@ -24,7 +26,7 @@ function Portfolio() {
   if (!loggedInInfo.data.status) navigate("/");
 
   const handleAdd = () => {
-    navigate("/");
+    setAdding(true);
   };
   const handleSelect = (item: IPortfolioItem) => {
     setSelected(item);
@@ -50,9 +52,15 @@ function Portfolio() {
         ))}
       </S.Container>
       {selected ? (
-        <S.SelectedWrapper onClick={() => setSelected(null)}>
+        <S.ModalWrapper onClick={() => setSelected(null)}>
           <SelectedPortfolioItem item={selected} />
-        </S.SelectedWrapper>
+        </S.ModalWrapper>
+      ) : null}
+      {adding ? (
+        <S.ModalWrapper >
+          {" "}
+          <PortfolioAdd />
+        </S.ModalWrapper>
       ) : null}
     </PS.Wrapper>
   );

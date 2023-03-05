@@ -15,3 +15,12 @@ export interface IPortfolioItem {
 export interface IPortfolio {
   data: IPortfolioItem[];
 }
+
+export interface IIpoList {
+  data: [
+    {
+      stockName: string;
+      stockCode: number;
+    }
+  ];
+}

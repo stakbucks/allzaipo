@@ -11,12 +11,10 @@ function SelectedPortfolioItem({ item }: { item: IPortfolioItem }) {
   const handleDeleteClick = async () => {
     await deletePortfolioItem(item);
     queryClient.invalidateQueries(["portfolio", loggedInInfo.data.nickname]);
-    console.log("삭제 완료");
   };
   return (
     <S.Item layoutId={item.portfolioId + ""}>
       <S.ItemTitle>{item.stockName}</S.ItemTitle>
-
       <S.InfoWrapper>
         <S.InfoLabel>수익률: {item.profitRate}%</S.InfoLabel>
       </S.InfoWrapper>

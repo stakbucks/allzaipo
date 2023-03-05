@@ -32,7 +32,7 @@ export const ItemContainer = styled(motion.div)`
   justify-content: center;
 `;
 
-export const SelectedWrapper = styled(motion.div)`
+export const ModalWrapper = styled(motion.div)`
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.2);
