@@ -19,7 +19,9 @@ function SelectedPortfolioItem({ item }: { item: IPortfolioItem }) {
         <S.InfoLabel>수익률: {item.profitRate}%</S.InfoLabel>
       </S.InfoWrapper>
       <S.ProfitRangeBar>
-        <S.ProfitRange profitRate={item.profitRate} />
+        <S.ProfitRange
+          profitRate={item.profitRate > 300 ? 300 : item.profitRate}
+        />
       </S.ProfitRangeBar>
       <S.InfoWrapper>
         <S.InfoLabel>청약일: </S.InfoLabel>

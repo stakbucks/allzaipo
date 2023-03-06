@@ -10,7 +10,9 @@ function PortfolioItem({ item }: { item: IPortfolioItem }) {
       <S.ItemProfitRate>
         수익률: {item.profitRate}%
         <S.ProfitRangeBar>
-          <S.ProfitRange profitRate={item.profitRate} />
+          <S.ProfitRange
+            profitRate={item.profitRate >= 300 ? 300 : item.profitRate}
+          />
         </S.ProfitRangeBar>
       </S.ItemProfitRate>
     </S.Item>

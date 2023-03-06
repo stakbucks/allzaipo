@@ -52,7 +52,8 @@ export const ProfitRange = styled.div<{ profitRate: number }>`
       ? `calc((${props.profitRate} / 300) * 100%)`
       : `calc((${props.profitRate} / (-300)) * 100%)`};
   height: 100%;
-  border-radius: 10px 0 0 10px;
+  border-radius: 10px
+    ${(props) => (props.profitRate === 300 ? "10px 10px" : "0 0")} 10px;
   background-color: ${(props) => (props.profitRate >= 0 ? "red " : "blue")};
   position: absolute;
 `;
