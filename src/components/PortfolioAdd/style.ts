@@ -13,6 +13,14 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
+export const Form = styled.form`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
 export const Title = styled.div`
   font-weight: 700;
   font-size: 35px;
@@ -24,7 +32,7 @@ export const Title = styled.div`
 
 export const InputWrapper = styled.div`
   width: 800px;
-  margin-top: 50px;
+  margin-top: 40px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -61,4 +69,28 @@ export const InputText = styled.input`
   font-size: 16px;
   position: absolute;
   left: 80px;
+`;
+
+export const AddBtn = styled.button`
+  width: 60px;
+  height: 30px;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 5px;
+  background: var(--bgColor);
+  color: var(--mainColor);
+  cursor: pointer;
+  position: absolute;
+  bottom: 30px;
+  right: 20px;
+`;
+
+export const XBtn = styled.div`
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  cursor: pointer;
 `;

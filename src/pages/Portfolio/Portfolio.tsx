@@ -57,9 +57,9 @@ function Portfolio() {
         </S.ModalWrapper>
       ) : null}
       {adding ? (
-        <S.ModalWrapper >
+        <S.ModalWrapper>
           {" "}
-          <PortfolioAdd />
+          <PortfolioAdd setAdding={setAdding} />
         </S.ModalWrapper>
       ) : null}
     </PS.Wrapper>

@@ -20,7 +20,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: "add",
-            element: <PortfolioAdd />,
+            element: <PortfolioAdd setAdding={() => {}} />,
           },
         ],
       },
