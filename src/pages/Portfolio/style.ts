@@ -31,13 +31,3 @@ export const ItemContainer = styled(motion.div)`
   align-items: center;
   justify-content: center;
 `;
-
-export const ModalWrapper = styled(motion.div)`
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-`;

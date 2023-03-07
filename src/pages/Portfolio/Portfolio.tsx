@@ -11,11 +11,14 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import SelectedPortfolioItem from "../../components/PortfolioItem/SelectedPortfolioItem/SelelctedPortfolioItem";
 import PortfolioAdd from "../../components/PortfolioAdd/PortfolioAdd";
+import PortfolioEdit from "../../components/PortfolioEdit/PortfolioEdit";
+import { ModalWrapper } from "../../components/PortfolioItem/SelectedPortfolioItem/style";
 
 function Portfolio() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState<IPortfolioItem | null>();
   const [adding, setAdding] = useState(false);
+  const [editing, setEditing] = useState<IPortfolioItem | null>();
   const loggedInInfo = useRecoilValue<ILoggedInInfoAtom>(loggedInInfoAtom);
   const { data } = useQuery<IPortfolio>(
     ["portfolio", loggedInInfo.data.nickname],
@@ -36,33 +39,39 @@ function Portfolio() {
   };
 
   return (
-    <PS.Wrapper>
-      <PS.Title>포트폴리오</PS.Title>
-      <S.AddBtn onClick={handleAdd}>추가하기</S.AddBtn>
-      <S.Container>
-        {data?.data.map((item) => (
-          <S.ItemContainer
-            transition={{ duration: 0 }}
-            onClick={() => handleSelect(item)}
-            layoutId={item.portfolioId + ""}
-            key={item.portfolioId}
-          >
-            <PortfolioItem item={item} />
-          </S.ItemContainer>
-        ))}
-      </S.Container>
-      {selected ? (
-        <S.ModalWrapper onClick={() => setSelected(null)}>
-          <SelectedPortfolioItem item={selected} />
-        </S.ModalWrapper>
+    <>
+      <PS.Wrapper>
+        <PS.Title>포트폴리오</PS.Title>
+        <S.AddBtn onClick={handleAdd}>추가하기</S.AddBtn>
+        <S.Container>
+          {data?.data.map((item) => (
+            <S.ItemContainer
+              transition={{ duration: 0 }}
+              onClick={() => handleSelect(item)}
+              layoutId={item.portfolioId + ""}
+              key={item.portfolioId}
+            >
+              <PortfolioItem item={item} />
+            </S.ItemContainer>
+          ))}
+        </S.Container>
+        {selected ? (
+          <SelectedPortfolioItem
+            item={selected}
+            setSelected={setSelected}
+            setEditing={setEditing}
+          />
+        ) : null}
+      </PS.Wrapper>
+      {adding ? <PortfolioAdd setAdding={setAdding} /> : null}
+      {editing ? (
+        <PortfolioEdit
+          item={editing}
+          setSelected={setSelected}
+          setEditing={setEditing}
+        />
       ) : null}
-      {adding ? (
-        <S.ModalWrapper>
-          {" "}
-          <PortfolioAdd setAdding={setAdding} />
-        </S.ModalWrapper>
-      ) : null}
-    </PS.Wrapper>
+    </>
   );
 }
 export default Portfolio;

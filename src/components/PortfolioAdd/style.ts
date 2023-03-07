@@ -1,4 +1,16 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
+
+export const ModalWrapper = styled(motion.div)`
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+`;
 
 export const Container = styled.div`
   width: 800px;

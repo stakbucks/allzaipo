@@ -1,6 +1,16 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
+export const ModalWrapper = styled(motion.div)`
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+`;
+
 export const Item = styled(motion.div)`
   width: 600px;
   height: 400px;
@@ -86,5 +96,13 @@ export const Btns = styled.div`
 export const Btn = styled.div`
   font-size: 16px;
   font-weight: 400;
+  cursor: pointer;
+`;
+export const XBtn = styled.div`
+  font-size: 18px;
+  font-weight: 500;
+  position: absolute;
+  top: 30px;
+  right: 20px;
   cursor: pointer;
 `;
