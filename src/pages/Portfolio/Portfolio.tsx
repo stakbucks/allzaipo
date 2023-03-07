@@ -2,17 +2,17 @@ import * as S from "./style";
 import * as PS from "../../styles/PageStyle";
 import { useQuery } from "react-query";
 import { IPortfolio, IPortfolioItem } from "./interface";
-import PortfolioItem from "../../components/PortfolioItem/PortfolioItem";
+import PortfolioItem from "../../components/PortfolioComponents/PortfolioItem/PortfolioItem";
 import { getUserPortfolios } from "../../apis/api/portfolioApi";
 import { useRecoilValue } from "recoil";
 import { loggedInInfoAtom } from "../../atoms/loggedInInfo/loggedInInfoAtom";
 import { ILoggedInInfoAtom } from "../../atoms/loggedInInfo/interface";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import SelectedPortfolioItem from "../../components/PortfolioItem/SelectedPortfolioItem/SelelctedPortfolioItem";
-import PortfolioAdd from "../../components/PortfolioAdd/PortfolioAdd";
-import PortfolioEdit from "../../components/PortfolioEdit/PortfolioEdit";
-import { ModalWrapper } from "../../components/PortfolioItem/SelectedPortfolioItem/style";
+import SelectedPortfolioItem from "../../components/PortfolioComponents/PortfolioItem/SelectedPortfolioItem/SelelctedPortfolioItem";
+import PortfolioAdd from "../../components/PortfolioComponents/PortfolioAddEditModal/PortfolioAdd/PortfolioAdd";
+import PortfolioEdit from "../../components/PortfolioComponents/PortfolioAddEditModal/PortfolioEdit/PortfolioEdit";
+import { ModalWrapper } from "../../components/PortfolioComponents/PortfolioItem/SelectedPortfolioItem/style";
 
 function Portfolio() {
   const navigate = useNavigate();

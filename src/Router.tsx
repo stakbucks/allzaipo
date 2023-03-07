@@ -3,7 +3,6 @@ import App from "./App";
 import Home from "./pages/Home/Home";
 import Portfolio from "./pages/Portfolio/Portfolio";
 import Analyze from "./pages/Analyze/Analyze";
-import PortfolioAdd from "./components/PortfolioAdd/PortfolioAdd";
 
 const router = createBrowserRouter([
   {

@@ -1,7 +1,7 @@
 import {
   IPortfolioAddForm,
   IPortfolioEditForm,
-} from "../../components/PortfolioAdd/interface";
+} from "../../interfaces/Portfolio/interface";
 import { baseApi } from "../utils/instance";
 
 const getUserPortfoliosURI = "api/portfolio/list";

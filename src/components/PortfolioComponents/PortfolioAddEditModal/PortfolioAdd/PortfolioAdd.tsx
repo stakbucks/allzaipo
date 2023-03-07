@@ -1,32 +1,20 @@
-import { useForm } from "react-hook-form";
-import { useQueryClient, useQuery, useMutation } from "react-query";
-import { useRecoilValue } from "recoil";
+import * as S from "../style";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import {
   getIpoList,
   postPortfolioCreate,
-  putPortfolioUpdate,
-} from "../../apis/api/portfolioApi";
-import { ILoggedInInfoAtom } from "../../atoms/loggedInInfo/interface";
-import { loggedInInfoAtom } from "../../atoms/loggedInInfo/loggedInInfoAtom";
-import { IIpoList, IPortfolioItem } from "../../pages/Portfolio/interface";
-import {
-  IPortfolioAddForm,
-  IPortfolioEditForm,
-} from "../PortfolioAdd/interface";
-import * as S from "../PortfolioAdd/style";
+} from "../../../../apis/api/portfolioApi";
+import { IIpoList } from "../../../../pages/Portfolio/interface";
+import { useForm } from "react-hook-form";
+import { useRecoilValue } from "recoil";
+import { loggedInInfoAtom } from "../../../../atoms/loggedInInfo/loggedInInfoAtom";
+import { ILoggedInInfoAtom } from "../../../../atoms/loggedInInfo/interface";
+import { IPortfolioAddForm } from "../../../../interfaces/Portfolio/interface";
 
-function PortfolioEdit({
-  item,
-  setEditing,
-  setSelected,
+function PortfolioAdd({
+  setAdding,
 }: {
-  item: IPortfolioItem;
-  setEditing: React.Dispatch<
-    React.SetStateAction<IPortfolioItem | null | undefined>
-  >;
-  setSelected: React.Dispatch<
-    React.SetStateAction<IPortfolioItem | null | undefined>
-  >;
+  setAdding: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const { register, handleSubmit } = useForm<IPortfolioAddForm>();
   const loggedInInfo = useRecoilValue<ILoggedInInfoAtom>(loggedInInfoAtom);
@@ -36,39 +24,35 @@ function PortfolioEdit({
     staleTime: 30000,
   });
 
-  const { mutateAsync } = useMutation((editedPortfolio: IPortfolioEditForm) =>
-    putPortfolioUpdate(editedPortfolio)
+  const { mutateAsync } = useMutation((newPortfolio: IPortfolioAddForm) =>
+    postPortfolioCreate(newPortfolio)
   );
 
   const handleXClick = () => {
-    setEditing(null);
+    setAdding(false);
   };
 
-  const onValid = async (editedPortfolioForm: IPortfolioAddForm) => {
-    await mutateAsync({
-      portfolioId: item.portfolioId,
-      ...editedPortfolioForm,
-    });
+  const onValid = async (newPortfolio: IPortfolioAddForm) => {
+    await mutateAsync(newPortfolio);
     await queryClient.invalidateQueries([
       "portfolio",
       loggedInInfo.data.nickname,
     ]);
-    setEditing(null);
+    setAdding(false);
   };
 
   return (
     <S.ModalWrapper>
       <S.Container>
-        <S.Title>수정</S.Title>
+        <S.Title>추가하기</S.Title>
         <S.Form onSubmit={handleSubmit(onValid)}>
           <S.InputWrapper>
             <S.InputLabel>종목명</S.InputLabel>
             <S.IpoSelect
-              defaultValue={item.stockCode}
               {...register("stockCode", { required: true })}
               name="stockCode"
             >
-              <option value={item.stockCode}>{item.stockName}</option>
+              <option value="none">=== 선택 ===</option>
               {ipoList?.data.map((i) => (
                 <option value={i.stockCode} key={i.stockCode}>
                   {i.stockName}
@@ -79,7 +63,6 @@ function PortfolioEdit({
           <S.InputWrapper>
             <S.InputLabel>배정수량</S.InputLabel>
             <S.InputNumber
-              defaultValue={item.sharesCnt}
               {...register("sharesCnt", { required: true })}
               type="number"
             />
@@ -87,7 +70,6 @@ function PortfolioEdit({
           <S.InputWrapper>
             <S.InputLabel>순수익</S.InputLabel>
             <S.InputNumber
-              defaultValue={item.profit}
               {...register("profit", { required: true })}
               type="number"
             />
@@ -95,18 +77,13 @@ function PortfolioEdit({
           <S.InputWrapper>
             <S.InputLabel>증권사</S.InputLabel>
             <S.InputText
-              defaultValue={item.agents}
               {...register("agents", { required: true })}
               type="text"
             />
           </S.InputWrapper>
           <S.InputWrapper>
             <S.InputLabel>메모</S.InputLabel>
-            <S.InputText
-              defaultValue={item.memo}
-              {...register("memo")}
-              type="text"
-            />
+            <S.InputText {...register("memo")} type="text" />
           </S.InputWrapper>
           <S.AddBtn>제출</S.AddBtn>
         </S.Form>
@@ -115,4 +92,4 @@ function PortfolioEdit({
     </S.ModalWrapper>
   );
 }
-export default PortfolioEdit;
+export default PortfolioAdd;

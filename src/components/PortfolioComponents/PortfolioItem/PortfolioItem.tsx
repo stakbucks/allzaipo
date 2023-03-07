@@ -1,5 +1,5 @@
 import * as S from "./style";
-import { IPortfolioItem } from "../../pages/Portfolio/interface";
+import { IPortfolioItem } from "../../../pages/Portfolio/interface";
 import { useState } from "react";
 import SelectedPortfolioItem from "./SelectedPortfolioItem/SelelctedPortfolioItem";
 

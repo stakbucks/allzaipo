@@ -1,11 +1,11 @@
-import { deletePortfolioItem } from "../../../apis/api/portfolioApi";
-import { IPortfolioItem } from "../../../pages/Portfolio/interface";
+import { deletePortfolioItem } from "../../../../apis/api/portfolioApi";
+import { IPortfolioItem } from "../../../../pages/Portfolio/interface";
 import * as S from "./style";
 import { useQueryClient } from "react-query";
 import { useRecoilValue } from "recoil";
-import { loggedInInfoAtom } from "../../../atoms/loggedInInfo/loggedInInfoAtom";
+import { loggedInInfoAtom } from "../../../../atoms/loggedInInfo/loggedInInfoAtom";
 import { useState } from "react";
-import PortfolioEdit from "../../PortfolioEdit/PortfolioEdit";
+import PortfolioEdit from "../../PortfolioAddEditModal/PortfolioEdit/PortfolioEdit";
 function SelectedPortfolioItem({
   item,
   setSelected,
