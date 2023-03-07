@@ -48,6 +48,7 @@ function PortfolioAdd({
             {...register("stockCode", { required: true })}
             name="stockCode"
           >
+            <option value="none">=== 선택 ===</option>
             {ipoList?.data.map((i) => (
               <option value={i.stockCode} key={i.stockCode}>
                 {i.stockName}
