@@ -17,12 +17,6 @@ const router = createBrowserRouter([
       {
         path: "portfolio",
         element: <Portfolio />,
-        children: [
-          {
-            path: "add",
-            element: <PortfolioAdd setAdding={() => {}} />,
-          },
-        ],
       },
       {
         path: "analyze",
