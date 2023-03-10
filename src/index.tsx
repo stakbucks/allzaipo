@@ -21,7 +21,6 @@ root.render(
       <QueryClientProvider client={queryClient}>
         <GlobalStyles />
         <RouterProvider router={router} />
-        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </RecoilRoot>
   </>
